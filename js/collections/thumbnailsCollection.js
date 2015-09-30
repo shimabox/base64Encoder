@@ -12,7 +12,8 @@
                 models = [];
 
             var loop = 0;
-            for (var i = 0, f; f = files[i]; i++) {
+            for (var i = 0; i<fileCnt; i++) {
+                var f = files[i];
 
                 if (!f.type.match('image.*') ||
                         f.type.match("image¥/vnd.adobe.*")) {
@@ -64,7 +65,7 @@
                         default:
                             break;
                     }
-                }
+                };
 
                 loop++;
             }
