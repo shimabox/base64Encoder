@@ -1,0 +1,129 @@
+h1 {
+    text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.8), 1px 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.container {
+    padding: 0 15px;
+}
+
+#read-img {
+    background-color: #F5F5F5;
+    height: 100%;
+    border: 3px dashed #B94A48;
+    margin-bottom: 10px;
+}
+
+#read-img > ul > li {
+    margin-bottom: 5px;
+}
+
+#read-file {
+    margin-left: 5px;
+}
+
+#detail {
+    background-color: #F5F5F5;
+}
+
+#detail-img {
+    margin-left: 0;
+}
+
+#detail-img > p{
+    margin-top: 1.5px;
+    margin-bottom: 11px;
+}
+
+#detail-img-info > span {
+    cursor: pointer;
+}
+
+#selected-image {
+    margin: 9px 0px 0px 18px;
+    word-break: break-all;
+    font-family: Courier;
+}
+
+#thumbnailsArea {
+    display: none;
+    background-color: #F5F5F5;
+    padding: 0px;
+}
+
+#choice-bottun {
+    margin: 5px 0px 8px 5px;
+}
+
+.detail-img-src {
+    word-break: break-all;
+    width:95%;
+    height:300px;
+    margin-top: 9px;
+}
+
+.thumbnail-list {
+    display: inline;
+}
+
+.thumbnail-list p {
+    display: inline;
+    border-radius: 3px;
+    box-shadow: inset 0px 0px 10px 0px #da4f49;
+    box-shadow: inset 0px 0px 10px 0px rgba(185, 74, 72, 0.8);
+    max-width: 28%;
+    max-height: 28%;
+    margin: 3% 0 3% 3%;
+    text-align: center;
+}
+
+.thumbnail-img {
+    margin: 3% 0 3% 3%;
+    max-width: 28%;
+    max-height: 28%;
+}
+
+.selected {
+    box-shadow: 0px 0px 10px rgba(185, 74, 72, 0.8);
+}
+
+.disp-none {
+    display:none;
+}
+
+input[type="text"].disp-none {
+    display:none;
+}
+
+input[type="file"].disp-none {
+    display:none;
+}
+
+.label {
+    font-size: 13px;
+    padding-bottom: 3px;
+}
+
+.btn-mini {
+    font-size: 12px;
+}
+
+.img-polaroid {
+    padding: 1px;
+}
+
+#loading-detail {
+    height: 80%;
+    width: 80%;
+    margin: auto;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-shadow: inset 0px 0px 10px 0px #da4f49;
+    box-shadow: inset 0px 0px 10px 0px rgba(185, 74, 72, 0.8);
+}
+
+#loading-detail p {
+    font-size: 20px;
+    color: #757c82;
+    margin: 10% 0;
+    text-align: center;
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>base64 encoder</title>
+<!-- Bootstrap -->
+<link href="./vendor/assets/bootstrap/css/slate/bootstrap.min.css" rel="stylesheet">
+<link href="./vendor/assets/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="./css/style.css" rel="stylesheet">
+<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="page-header">
+            <h1><a href="./">base64 encoder</a></h1>
+        </div>
+        <div class="row-fluid">
+            <div class="span6">
+                <div id="read-img" class="well">
+                    <ul class="unstyled">
+                        <li>・ここに<strong>画像をドロップ</strong>するか<strong>画像を選択</strong>してね
+                            <div id="choice-bottun">
+                                <input id="read-file" type="file" class="disp-none" multiple>
+                                <input id="cover" type="text" class="disp-none">
+                                <button id="choice" class="btn btn-danger btn-small"><i class="icon-share-alt icon-white"></i>画像を選ぶ</button>
+                            </div>
+                        </li>
+                        <li>・画像は<strong>複数選択</strong>できます</li>
+                        <li>・<strong>1度</strong>に<strong>5MB</strong>まで処理してみます</li>
+                        <li>・但し、サイズの大きな画像をエンコードしてもそこまで意味無いかもです</li>
+                        <li>・css / imgタグ / data-uri の値を提供します</li>
+                        <li>・chrome ( ver.27 ) / safari6 ( iOSも ) で動作確認済みです</li>
+                    </ul>
+                </div>
+                <div id="selected-image-anchor"></div>
+                <div id="detail-target"></div>
+            </div>
+            <div class="span6">
+                <ul id="thumbnailsArea" class="well unstyled inline"></ul>
+            </div>
+        </div>
+    </div>
+<script type="text/template" id="tmpl-anchor">
+<a name="<%- name %>"></a>
+</script>
+<script type="text/template" id="tmpl-detail">
+<% if(isLoading) { %>
+    <div id="loading-detail">
+        <p><%- name %></p>
+    </div>
+<% } else { %>
+    <div id="detail-img" class="span6">
+        <p><span class="label label-important">selected image</span></p>
+        <img class="img-polaroid" src="<%- src %>" title="<%- name %>">
+        <ul id="selected-image">
+            <li>name: <%- name %></li>
+            <li>type: <%- type %></li>
+            <li>size: <%- size %> byte</li>
+        </ul>
+    </div>
+<% } %>
+</script>
+<script type="text/template" id="tmpl-thumbnail">
+<% if(isLoading) { %>
+    <img class="thumbnail-img" src="<%- src %>" title="<%- name %>">
+<% } else { %>
+    <a href="./#<%- name %>"><img class="thumbnail-img img-polaroid<% if(isSelect===true) { %> selected<% } %>" src="<%- src %>" title="<%- name %>"></a>
+<% } %> 
+</script>
+<script type="text/template" id="tmpl-detail-info">
+    <div id="detail-img-info" class="span6">
+        <button id="css" class="btn btn-mini" type="button" <% if(selectTag==="css") { %> disabled="disabled"<% } %>>css</button>
+        <button id="img-tag" class="btn btn-mini" type="button" <% if(selectTag==="img-tag") { %> disabled="disabled"<% } %>>img-tag</button>
+        <button id="data-uri" class="btn btn-mini" type="button" <% if(selectTag==="data-uri") { %> disabled="disabled"<% } %>>data-uri</button>
+    <% if (isLoading) { %>
+        <textarea class="detail-img-src">Now Loading...</textarea>
+    <% } else {  %>
+        <% if(selectTag==="css") { %>
+            <textarea class="detail-img-src">background-image: url("<%- src %>");</textarea>
+        <% } else if(selectTag==="img-tag") { %>
+            <textarea class="detail-img-src"><img src="<%- src %>"></textarea>
+        <% } else if(selectTag==="data-uri") { %>
+            <textarea class="detail-img-src"><%- src %></textarea>
+        <% } %>
+    <% } %>
+    </div>
+</script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
+<script type="text/javascript" src="./js/main.js"></script>
+<script type="text/javascript" src="./js/views/mainView.js"></script>
+<script type="text/javascript" src="./js/views/thumbnailsView.js"></script>
+<script type="text/javascript" src="./js/views/thumbnailView.js"></script>
+<script type="text/javascript" src="./js/views/detailThumbnailView.js"></script>
+<script type="text/javascript" src="./js/models/thumbnailModel.js"></script>
+<script type="text/javascript" src="./js/collections/thumbnailsCollection.js"></script>
+</body>
+</html>
